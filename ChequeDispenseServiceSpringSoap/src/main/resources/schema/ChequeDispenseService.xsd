@@ -1,0 +1,125 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+            xmlns:tns="http://www.wstutorial.com/ws/ChequeDispenseService" 
+            targetNamespace="http://www.wstutorial.com/ws/ChequeDispenseService"
+            elementFormDefault="qualified">
+    <xs:element name="GetTransactionIDRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="1" name="DetailsRequest" type="tns:TransactionIDDetailsRequestDTO"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="TransactionIDDetailsRequestDTO">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="CardMagData1" type="xs:string"/>
+            <xs:element minOccurs="0" maxOccurs="1" name="CardMagData2" type="xs:string"/>
+            <xs:element minOccurs="0" maxOccurs="1" name="CardMagData3" type="xs:string"/>
+            <xs:element minOccurs="0" maxOccurs="1" name="EncryptedPinBlock" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="GetTransactionIDResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="1" name="DetailsResponse" type="tns:TransactionIDDetailsResponseDTO"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="TransactionIDDetailsResponseDTO">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="TransactionStatus" type="xs:string"/>
+            <xs:element minOccurs="1" maxOccurs="1" name="NumberOfAccounts" type="xs:int"/>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="Accounts" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" maxOccurs="1" name="TransactionID" type="xs:string"/>
+            <xs:element minOccurs="0" maxOccurs="1" name="Error" type="tns:ErrorDTO"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ErrorDTO">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="errorCode" type="xs:string"/>
+            <xs:element minOccurs="0" maxOccurs="1" name="errorDesc" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="PrintedBookletRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="1" name="PrintChequeDispenseRequest" type="tns:PrintChequeDispenseRequestDTO"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="PrintChequeDispenseRequestDTO">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="TransactionStatus" type="xs:string"/>
+            <xs:element minOccurs="0" maxOccurs="1" name="TransactionID" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="PrintedBookletResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="1" name="PrintChequeDispenseResponse" type="tns:PrintChequeDispenseResponseDTO"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="PrintChequeDispenseResponseDTO">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="TransactionStatus" type="xs:string"/>
+            <xs:element minOccurs="0" maxOccurs="1" name="TransactionID" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="GetBookletDetailsRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="1" name="BookletDetailsRequest" type="tns:BookletDetailsRequestDTO"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="BookletDetailsRequestDTO">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="Account" type="xs:string"/>
+            <xs:element minOccurs="0" maxOccurs="1" name="TransactionStatus" type="xs:string"/>
+            <xs:element minOccurs="0" maxOccurs="1" name="TransactionID" type="xs:string"/>
+            <xs:element minOccurs="0" maxOccurs="1" name="Otp" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="GetBookletDetailsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="1" name="BookletDetailsResponse" type="tns:BookletDetailsResponseDTO"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="BookletDetailsResponseDTO">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="TransactionStatus" type="xs:string"/>
+            <xs:element minOccurs="0" maxOccurs="1" name="TransactionID" type="xs:string"/>
+            <xs:element minOccurs="0" maxOccurs="1" name="AccountNumber" type="xs:string"/>
+            <xs:element minOccurs="0" maxOccurs="1" name="BookletRequest" type="xs:string"/>
+            <xs:element minOccurs="0" maxOccurs="1" name="SerialFrom" type="xs:string"/>
+            <xs:element minOccurs="0" maxOccurs="1" name="SerialTo" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ValidateTransactionIDRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="1" name="TransactionDetailsRequest" type="tns:ValidateTransactionIDRequestDTO"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="ValidateTransactionIDRequestDTO">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="TransactionID" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ValidateTransactionIDResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="1" name="TransactionDetailsResponse" type="tns:ValidateTransactionIDResponseDTO"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="ValidateTransactionIDResponseDTO">
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="TransactionID" type="xs:string"/>
+            <xs:element minOccurs="0" maxOccurs="1" name="TransactionStatus" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
